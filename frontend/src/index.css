@@ -1,0 +1,47 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('./img/background4.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-size: 200vh;
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.navbar {
+  height: 6vh;
+}
+
+.btn {
+  height: 4vh;
+  width: 25vh;
+}
+
+.adminform {
+  background-color: rgba(6, 128, 204, 0.4);
+}
+.rolunk{
+  background-color: rgba(102, 255, 0, 0.1);
+}
+
+.kartyak{
+  background-color: rgba(6, 128, 204, 0.4);
+}
+
+.orokbefogadform{
+  background-color: rgba(6, 128, 204, 0.4);
+}
+
+.kapcsolat{
+  background-color: rgba(255, 238, 0, 0.1);
+}
