@@ -91,12 +91,12 @@ app.post('/register', (req, res) => {
     const telefon = req.body.telefon;
     const kisallatnev = req.body.kisallatnev;
 
-    db.query('INSERT INTO orokbefogado (nev,email,telefon,kisallatnev) VALUES (?,?,?,?)', [nev, email, telefon, kisallatnev],
+    db.query('INSERT INTO orokbefogado (nev,email,telefon) VALUES (?,?,?)', [nev, email, telefon],
         (err, result) => {
             if (result) {
                 res.send(result);
             } else {
-                res.send({ message: "Siker" })
+                res.send({ message: "Sikertelen" })
             }
         })
 })

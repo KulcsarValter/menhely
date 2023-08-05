@@ -6,12 +6,16 @@ import Kapcsolat from './Kapcsolat'
 import Kutyak from './Kutyak'
 import Macskak from './Macskak'
 import OrokbefogadasForm from './OrokbefogadasForm'
+import Fileupload from './Fileupload'
 import Todo from './Todo'
+
+import './Dropdown.css'
 
 import 'tachyons'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import 'bootstrap/dist/css/bootstrap.min.css'
+
+
 
 
 function App() {
@@ -26,6 +30,8 @@ function App() {
         <Route path='/macskak' element={<Macskak />}></Route>
         <Route path='/kapcsolat' element={<Kapcsolat />}></Route> 
         <Route path='/orokbefogadas' element={<OrokbefogadasForm />}></Route> 
+        <Route path='/fileupload' element={<Fileupload />}></Route> 
+        
       </Routes>
     </BrowserRouter>
   )

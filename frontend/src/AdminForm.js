@@ -1,5 +1,5 @@
 import Axios from 'axios'
-import React, { useState  } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const AdminForm = () => {
@@ -23,29 +23,33 @@ const AdminForm = () => {
     return (
         <div>
             <div>
-                <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-3">
-                    <div className="container-fluid">
-                        <Link to='/admin' className='btn btn-outline-warning grow mx-2'>Admin</Link>
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
+                <nav className="navbar">
+                    <ul>
+                        <li>
+                            <Link to='/' className='btn btn-info w-75'>Rólunk</Link>
+                        </li>
+                        <li>
+                            <Link to='/admin' className='btn btn-info w-75'>Admin</Link>
+                        </li>
+                        <li>
+                            <Link className='btn btn-info w-75'>Kisállataink</Link>
+                            <ul>
 
-                        <div className="collapse navbar-collapse" id="navbarNavDropdown">
-                            <ul className="navbar-nav ms-auto ">
-                                <li className="nav-item">
-                                    <Link to='/' className='btn btn-outline-warning grow mx-2'>Rólunk</Link>
+                                <li>
+                                    <Link to='/allatok' className='btn btn-info w-75' >Összes kisállat</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to='/allatok' className='btn btn-outline-warning grow mx-2'>Összes kisállat</Link>
+                                    <Link to='/kutyak' className='btn btn-info w-75' >Kutyáink</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to='/kapcsolat' className='btn btn-outline-warning grow mx-2'>Kapcsolat</Link>
+                                    <Link to='/macskak' className='btn btn-info w-75' >Macskáink</Link>
                                 </li>
-
                             </ul>
-                        </div>
-                    </div>
+                        </li>
+                        <li>
+                            <Link to='/kapcsolat' className='btn btn-info w-75' >Kapcsolat</Link>
+                        </li>
+                    </ul>
                 </nav>
                 <div className='d-flex justify-content-center'>
                     <div className='mt-5 p-3 br3 w-25'>

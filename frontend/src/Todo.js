@@ -33,7 +33,8 @@ function Todo() {
                                     <td>
                                         <button className='btn btn-primary w-20'>Frissítés</button>
                                         <button className='btn btn-danger mx-2 w-20'>Törlés</button>
-                                        <Link to='/' className='btn btn-success w-25'>Hozzáadás</Link>
+                                        <Link to='/' className='btn btn-success mx-2 w-25'>Hozzáadás</Link>
+                                        <Link to='/fileupload' className='btn btn-success w-25'>Kép feltöltése</Link>
                                     </td>
                                 </tr>
 

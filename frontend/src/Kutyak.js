@@ -15,43 +15,40 @@ function Kutyak() {
     return (
         <div>
             <div>
-                <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+                <nav className="navbar">
+                    <ul>
+                        <li>
+                            <Link to='/' className='btn btn-info w-75'>Rólunk</Link>
+                        </li>
+                        <li>
+                            <Link to='/admin' className='btn btn-info w-75'>Admin</Link>
+                        </li>
+                        <li>
+                            <Link className='btn btn-info w-75'>Kisállataink</Link>
+                            <ul>
 
-                    <div className="container-fluid ">
-                        <Link to='/admin' className='btn btn-outline-warning grow mx-2'>Admin</Link>
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
-
-                        <div className="collapse navbar-collapse" id="navbarNavDropdown">
-                            <ul className="navbar-nav ms-auto ">
-                                <li className="nav-item">
-                                    <Link to='/' className='btn btn-outline-warning grow mx-2'>Rólunk</Link>
+                                <li>
+                                    <Link to='/allatok' className='btn btn-info w-75' >Összes kisállat</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to='/allatok' className='btn btn-outline-warning grow mx-2'>Összes kisállat</Link>                                   
+                                    <Link to='/kutyak' className='btn btn-info w-75' >Kutyáink</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to='/kutyak' className='btn btn-outline-warning grow mx-2'>Kutyáink</Link>                                   
+                                    <Link to='/macskak' className='btn btn-info w-75' >Macskáink</Link>
                                 </li>
-                                <li className="nav-item">
-                                    <Link to='/macskak' className='btn btn-outline-warning grow mx-2'>Macskáink</Link>                                   
-                                </li>
-                                <li className="nav-item">
-                                    <Link to='/kapcsolat' className='btn btn-outline-warning grow mx-2'>Kapcsolat</Link>
-                                </li>
-
                             </ul>
-                        </div>
-                    </div>
+                        </li>
+                        <li>
+                            <Link to='/kapcsolat' className='btn btn-info w-75' >Kapcsolat</Link>
+                        </li>
+                    </ul>
                 </nav>
-                <h2 className='text-center' >Tekintse meg a menhelyünkön lévő kutyákat és macskákat!</h2>                
+                <h2 className='text-center' >Tekintse meg a menhelyünkön lévő kutyákat és macskákat!</h2>
             </div>
-            <div className='d-flex justify-content-center'>
+            <div className='d-flex justify-content-center my-5'>
                 {
                     kutyak.map((data, i) => (
-                        <div className="pa1 kartyak grow ma1 br2" key={i}>
+                        <div className="pa1 kartyak grow ma1 br2 my-5" key={i}>
                             <p>Állat neve: {data.allatnev}</p>
                             <p>Faj: {data.allatfaj}</p>
                             <p>Fajta: {data.allatfajta}</p>
