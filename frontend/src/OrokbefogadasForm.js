@@ -21,7 +21,7 @@ function OrokbefogadasForm() {
             if (response.data.message) {
                 setRegisterStatus(response.data.message);
             } else {
-                setRegisterStatus("Sikeres örökbefogadás");
+                setRegisterStatus("Sikeres Örökbefogadás");
             }
         })
     }
