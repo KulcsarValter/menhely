@@ -55,11 +55,13 @@ function Kutyak() {
                             <p>Neme: {data.allativar}</p>
                             <p>Kora: {data.allatkor} éves</p>
                             <p>Leírás: {data.allatleiras}</p>
-                            <Link to='/orokbefogadas' className='btn btn-outline-warning'>Örökbefogadás</Link>
                         </div>
                     ))
                 }
             </div>
+            <div className='d-flex justify-content-center'>
+                <Link to='/orokbefogadas' className='d-flex justify-content-center btn btn-outline-info'>Örökbefogadás</Link>
+            </div> 
         </div>
     )
 }

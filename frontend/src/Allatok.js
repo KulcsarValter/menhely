@@ -26,7 +26,7 @@ function Allatok() {
                         <li>
                             <Link className='btn btn-info w-75'>Kisállataink</Link>
                             <ul>
-                                <li>                                  
+                                <li>
                                     <Link to='/allatok' className='btn btn-info w-75' >Összes kisállat</Link>
                                     <Link to='/kutyak' className='btn btn-info w-75' >Kutyáink</Link>
                                     <Link to='/macskak' className='btn btn-info w-75' >Macskáink</Link>
@@ -52,12 +52,15 @@ function Allatok() {
                                 <p>Neme: {data.allativar}</p>
                                 <p>Kora: {data.allatkor} éves</p>
                                 <p>Leírás: {data.allatleiras}</p>
-                                <Link to='/orokbefogadas' className='btn btn-outline-warning'>Örökbefogadás</Link>
+                                <div key={i} ><img src={data.allatkep.data} alt='Kép'></img></div>
                             </div>
-                        </div>
 
+                        </div>
                     ))
                 }
+            </div>
+            <div className='d-flex justify-content-center'>
+                <Link to='/orokbefogadas' className='d-flex justify-content-center btn btn-outline-info'>Örökbefogadás</Link>
             </div>
         </div>
     )

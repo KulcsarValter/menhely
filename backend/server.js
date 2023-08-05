@@ -26,7 +26,7 @@ app.get('/allatok', (req, res) => {
     db.query(sql, (err, data) => {
         if (err) {
             return res.json(err);
-        } else {
+        } else {           
             return res.json(data);
         }
     })
@@ -60,10 +60,11 @@ app.post('/admin', (req, res) => {
 
     db.query('SELECT felhasznalonev,jelszo FROM `admin` WHERE felhasznalonev="admin" AND jelszo="admin"', [felhasznalonev, jelszo],
         (err, result) => {
+            
             if (err) {
                 req.setEncoding({ err: err })
             } else {
-                if (result.length > 0) {
+                if (result.length > 0 && felhasznalonev === 'admin' && jelszo ==='admin') {
                     res.send(result);
                 } else {
                     res.send("Hibás felhasználónév vagy jelszó");

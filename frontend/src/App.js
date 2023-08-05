@@ -9,14 +9,12 @@ import OrokbefogadasForm from './OrokbefogadasForm'
 import Fileupload from './Fileupload'
 import Todo from './Todo'
 
+
 import './Dropdown.css'
 
 import 'tachyons'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-
-
-
 
 function App() {
   return (
@@ -28,10 +26,9 @@ function App() {
         <Route path='/allatok' element={<Allatok />}></Route>
         <Route path='/kutyak' element={<Kutyak />}></Route>
         <Route path='/macskak' element={<Macskak />}></Route>
-        <Route path='/kapcsolat' element={<Kapcsolat />}></Route> 
-        <Route path='/orokbefogadas' element={<OrokbefogadasForm />}></Route> 
-        <Route path='/fileupload' element={<Fileupload />}></Route> 
-        
+        <Route path='/kapcsolat' element={<Kapcsolat />}></Route>
+        <Route path='/orokbefogadas' element={<OrokbefogadasForm />}></Route>
+        <Route path='/fileupload' element={<Fileupload />}></Route>
       </Routes>
     </BrowserRouter>
   )

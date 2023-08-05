@@ -1,5 +1,5 @@
 body {
-  
+
   background-image: url('./img/background4.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -21,26 +21,22 @@ code {
   height: 6vh;
 }
 
-.btn {
-  height: 4vh;
-  width: 25vh;
-}
-
 .adminform {
   background-color: rgba(6, 128, 204, 0.4);
 }
-.rolunk{
+
+.rolunk {
   background-color: rgba(102, 255, 0, 0.1);
 }
 
-.kartyak{
+.kartyak {
   background-color: rgba(6, 128, 204, 0.4);
 }
 
-.orokbefogadform{
+.orokbefogadform {
   background-color: rgba(6, 128, 204, 0.4);
 }
 
-.kapcsolat{
+.kapcsolat {
   background-color: rgba(255, 238, 0, 0.1);
 }

@@ -57,11 +57,11 @@ const AdminForm = () => {
                         <form onSubmit={login} className='adminform p-3 br3'>
                             <div className='mb-3'>
                                 <label htmlFor='adminNev'>Név</label>
-                                <input type='text' className='form-control br-3' onChange={(e) => { setfelhasznalonev(e.target.value) }} />
+                                <input type='text' className='form-control br-3' required value={felhasznalonev}  onChange={(e) => { setfelhasznalonev(e.target.value) }} />
                             </div>
                             <div>
                                 <label htmlFor='adminJelszo'>Jelszó</label>
-                                <input type='text' className='form-control' onChange={(e) => { setJelszo(e.target.value) }} />
+                                <input type='text' className='form-control' required value={jelszo}  onChange={(e) => { setJelszo(e.target.value) }} />
                             </div>
                             <p></p>
 
