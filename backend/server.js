@@ -58,20 +58,11 @@ app.post('/admin', (req, res) => {
     const felhasznalonev = req.body.felhasznalonev;
     const jelszo = req.body.jelszo;
 
-    db.query('SELECT felhasznalonev,jelszo FROM `admin` WHERE felhasznalonev="admin" AND jelszo="admin"', [felhasznalonev, jelszo],
-        (err, result) => {
-            
-            if (err) {
-                req.setEncoding({ err: err })
-            } else {
-                if (result.length > 0 && felhasznalonev === 'admin' && jelszo ==='admin') {
-                    res.send(result);
-                } else {
-                    res.send("Hibás felhasználónév vagy jelszó");
-                }
-            }
-        }
-    )
+    if (felhasznalonev === 'admin' && jelszo === 'admin') {
+        res.json({ message: 'success' });
+    } else {
+        res.json({ message: 'error' });
+    }
 })
 
 app.post('/create', (req, res) => {

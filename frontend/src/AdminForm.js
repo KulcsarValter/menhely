@@ -1,6 +1,6 @@
 import Axios from 'axios'
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom';
 
 const AdminForm = () => {
 
@@ -9,13 +9,18 @@ const AdminForm = () => {
     const [loginStatus, setLoginStatus] = useState("");
 
     const login = (e) => {
+        e.preventDefault();
 
         Axios.post('http://localhost:3001/admin', {
             felhasznalonev: felhasznalonev,
             jelszo: jelszo,
         }).then((response) => {
-            if (response.data.message) {
-                setLoginStatus(response.data.message);
+            if (response.data.message === 'success') {
+                setLoginStatus('Sikeres bejelentkezés!');                
+                // Sikeres bejelentkezés esetén átirányítás a Todo oldalra
+                window.location.href = '/todo';
+            } else {
+                setLoginStatus('Hibás felhasználónév vagy jelszó');
             }
         })
     }
@@ -65,7 +70,7 @@ const AdminForm = () => {
                             </div>
                             <p></p>
 
-                            <Link to='/todo' className='btn btn-outline-warning w-100 grow'>Bejelentkezés</Link>
+                            <button type="submit" className='btn btn-outline-warning w-100 grow'>Bejelentkezés</button>
                             <h1 style={{ color: 'red', fontSize: '15px', textAlign: 'center', marginTop: '20px' }}>{loginStatus}</h1>
                             <p></p>
                             <Link to='/' className='btn btn-outline-warning w-100 grow'>Vissza</Link>
