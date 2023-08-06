@@ -82,16 +82,20 @@ app.post('/register', (req, res) => {
     const email = req.body.email;
     const telefon = req.body.telefon;
     const kisallatnev = req.body.kisallatnev;
-
-    db.query('INSERT INTO orokbefogado (nev,email,telefon) VALUES (?,?,?)', [nev, email, telefon],
-        (err, result) => {
-            if (result) {
-                res.send(result);
-            } else {
-                res.send({ message: "Sikertelen" })
-            }
-        })
-})
+  
+    db.query(
+      'INSERT INTO orokbefogado (nev, email, telefon, kisallatnev) VALUES (?, ?, ?, ?)',
+      [nev, email, telefon, kisallatnev],
+      (err, result) => {
+        if (err) {
+          console.error(err);
+          res.status(500).send({ message: 'Sikertelen örökbefogadás' });
+        } else {
+          res.status(200).send({ message: 'Sikeres Örökbefogadás' });
+        }
+      }
+    );
+  });
 
 app.listen(3001, () => {
     console.log("App is run 3001 port");
