@@ -66,7 +66,7 @@ const AdminForm = () => {
                             </div>
                             <div>
                                 <label htmlFor='adminJelszo'>Jelszó</label>
-                                <input type='text' className='form-control' required value={jelszo}  onChange={(e) => { setJelszo(e.target.value) }} />
+                                <input type='password' className='form-control' required value={jelszo}  onChange={(e) => { setJelszo(e.target.value) }} />
                             </div>
                             <p></p>
 
