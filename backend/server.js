@@ -71,11 +71,23 @@ app.post('/create', (req, res) => {
         req.body.allatfaj, 
         req.body.allatnev  
     ]
-    db.query(sql, [values], (err, res) => {
+    db.query(sql, [values], (err, result) => {
         if (err) return res.json(err);
-        return res.json(data);
+        return res.json(result);
     })
 })
+
+app.delete('/delete/:allatId', (req, res) => {
+    const allatId = req.params.allatId;
+    const sql = 'DELETE FROM allatok WHERE allatId = ?';
+    db.query(sql, [allatId], (err, result) => {
+        if (err) {
+            return res.json(err);
+        } else {
+            return res.json({ message: 'Sikeres törlés' });
+        }
+    });
+});
 
 app.post('/register', (req, res) => {
     const nev = req.body.nev;
@@ -95,7 +107,7 @@ app.post('/register', (req, res) => {
         }
       }
     );
-  });
+});
 
 app.listen(3001, () => {
     console.log("App is run 3001 port");
