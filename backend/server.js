@@ -54,6 +54,19 @@ app.get('/macskak', (req, res) => {
     })
 })
 
+// Állat nevek lekérése
+app.get('/availablePetNames', (req, res) => {
+    const sql = 'SELECT allatnev FROM allatok';
+    db.query(sql, (err, data) => {
+        if (err) {
+            return res.json(err);
+        } else {
+            const petNames = data.map(item => item.allatnev);
+            return res.json(petNames);
+        }
+    })
+})
+
 app.post('/admin', (req, res) => {
     const felhasznalonev = req.body.felhasznalonev;
     const jelszo = req.body.jelszo;

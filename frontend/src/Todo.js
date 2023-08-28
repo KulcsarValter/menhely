@@ -39,10 +39,9 @@ function Todo() {
                                 <td>{data.allatfaj}</td>
                                 <td>{data.allatnev}</td>
                                 <td>
-                                    <button className='btn btn-primary w-20'>Frissítés</button>
+                                    <button className='btn btn-primary w-20'>Módosítás</button>
                                     <button
-                                        className='btn btn-danger mx-2 w-20'
-                                        onClick={() => handleDelete(data.allatId)} // Új sor
+                                        className='btn btn-danger mx-2 w-20' onClick={() => handleDelete(data.allatId)} // Új sor
                                     >
                                         Törlés
                                     </button>

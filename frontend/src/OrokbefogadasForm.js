@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -8,6 +8,7 @@ function OrokbefogadasForm() {
   const [telefon, setTelefon] = useState('');
   const [kisallatnev, setKisallatnev] = useState('');
   const [registerStatus, setRegisterStatus] = useState('');
+  const [availablePetNames, setAvailablePetNames] = useState([]);
 
   const register = (e) => {
     e.preventDefault();
@@ -29,6 +30,16 @@ function OrokbefogadasForm() {
         setRegisterStatus('Hiba történt az örökbefogadás során.');
       });
   };
+
+  useEffect(() => {
+    Axios.get('http://localhost:3001/availablePetNames')
+      .then(response => {
+        setAvailablePetNames(response.data);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }, []);
 
   return (
     <div className='d-flex justify-content-center vh-100 align-items-center'>
@@ -72,15 +83,19 @@ function OrokbefogadasForm() {
         </div>
         <div className='mb-3'>
           <label htmlFor='kisallatnev'>Kisállat neve</label>
-          <input
-            type='text'
+          <select
             name='kisallatnev'
             className='form-control'
             required
             onChange={(e) => {
               setKisallatnev(e.target.value);
             }}
-          />
+          >
+            <option value='' disabled selected>Válassza ki kiskedvencét!</option>
+            {availablePetNames.map(name => (
+              <option key={name} value={name}>{name}</option>
+            ))}
+          </select>
         </div>
         <p></p>
         <button type='submit' className='btn btn-outline-warning w-100'>
