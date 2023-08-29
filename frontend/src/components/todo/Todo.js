@@ -46,7 +46,7 @@ function Todo() {
                   >
                     Törlés
                   </button>
-                  <Link to="/" className="btn btn-success mx-2 w-25">
+                  <Link to="/todo/HozzaadForm" className="btn btn-success mx-2 w-25">
                     Hozzáadás
                   </Link>
                   <Link to="/fileupload" className="btn btn-success w-25">
