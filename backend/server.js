@@ -1,10 +1,12 @@
 const express = require("express");
 const mysql = require("mysql");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 
 const app = express();
 app.use(cors());
-app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const db = mysql.createConnection({
   host: "localhost",
@@ -54,7 +56,6 @@ app.get("/macskak", (req, res) => {
   });
 });
 
-// Állat nevek lekérése
 app.get("/availablePetNames", (req, res) => {
   const sql = "SELECT allatnev FROM allatok";
   db.query(sql, (err, data) => {
@@ -79,11 +80,24 @@ app.post("/admin", (req, res) => {
 });
 
 app.post("/create", (req, res) => {
-  const sql = "INSERT INTO allatok (allatfaj,allatnev) VALUES (?)";
-  const values = [req.body.allatfaj, req.body.allatnev];
-  db.query(sql, [values], (err, result) => {
-    if (err) return res.json(err);
-    return res.json(result);
+  const sql =
+    "INSERT INTO allatok (allatfaj, allatnev, allatkor, allatfajta, allativar, allatleiras) VALUES (?, ?, ?, ?, ?, ?)";
+  const values = [
+    req.body.allatfaj,
+    req.body.allatnev,
+    req.body.allatkor,
+    req.body.allatfajta,
+    req.body.allativar,
+    req.body.allatleiras,
+  ];
+
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ message: "Hozzáadás hiba" });
+    }
+
+    return res.json({ message: "Hozzáadás sikeres" });
   });
 });
 
@@ -120,5 +134,5 @@ app.post("/register", (req, res) => {
 });
 
 app.listen(3001, () => {
-  console.log("App is run 3001 port");
+  console.log("App is running on port 3001");
 });
