@@ -56,7 +56,7 @@ function Allatok() {
       </div>
       <div className="d-flex justify-content-center my-5">
         {allatok.map((data, i) => (
-          <div>
+          <div key={i}>
             <div className="pa1 kartyak grow ma1 br2 my-5" key={i}>
               <p>Állat neve: {data.allatnev}</p>
               <p>Faj: {data.allatfaj}</p>

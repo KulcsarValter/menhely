@@ -8,19 +8,33 @@ function HozzaadForm() {
   const [allatfajta, setAllatfajta] = useState("");
   const [allativar, setAllativar] = useState("");
   const [allatleiras, setAllatleiras] = useState("");
+  const [allatKep, setAllatKep] = useState(null);
+
+  // Kép feltöltés kezelése
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    setAllatKep(file);
+  };
 
   function handleSubmit(event) {
     event.preventDefault();
 
-    // Új állat hozzáadásának szerveroldali kérése
-    Axios.post("http://localhost:3001/create", {
-      allatnev,
-      allatfaj,
-      allatkor,
-      allatfajta,
-      allativar,
-      allatleiras,
-    })
+    // Kép feltöltés a FormData segítségével
+  const formData = new FormData();
+  formData.append("allatnev", allatnev);
+  formData.append("allatfaj", allatfaj);
+  formData.append("allatkor", allatkor);
+  formData.append("allatfajta", allatfajta);
+  formData.append("allativar", allativar);
+  formData.append("allatleiras", allatleiras);
+  formData.append("allatKep", allatKep); // Kép hozzáadása
+
+  // Új állat hozzáadásának szerveroldali kérése
+  Axios.post("http://localhost:3001/create", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data", // Fontos: multipart form adatok küldése
+    },
+  })
       .then((res) => {
         console.log(res.data);
         // Állatok frissítése (opcionális)
@@ -78,6 +92,10 @@ function HozzaadForm() {
             value={allatleiras}
             onChange={(e) => setAllatleiras(e.target.value)}
           />
+        </div>
+        <div>
+          <label>Kép feltöltése:</label>
+          <input type="file" accept="image/*" onChange={handleImageUpload} />
         </div>
         <button type="submit">Hozzáadás</button>
       </form>

@@ -2,12 +2,24 @@ const express = require("express");
 const mysql = require("mysql");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const multer = require("multer");
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Képfeltöltés beállítása a "public" mappába
+const storage = multer.diskStorage({
+  destination: "public/images",
+  filename: (req, file, cb) => {
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1E9);
+    cb(null, file.fieldname + "-" + uniqueSuffix + file.originalname);
+  },
+});
+
+const upload = multer({ storage: storage });
 
 const db = mysql.createConnection({
   host: "localhost",
@@ -80,9 +92,12 @@ app.post("/admin", (req, res) => {
   }
 });
 
-app.post("/create", (req, res) => {
+app.post("/create", upload.single("allatKep"), (req, res) => {
+  // Kép elérési útvonala
+  const allatKepPath = req.file ? req.file.path : null;
+
   const sql =
-    "INSERT INTO allatok (allatfaj, allatnev, allatkor, allatfajta, allativar, allatleiras) VALUES (?, ?, ?, ?, ?, ?)";
+    "INSERT INTO allatok (allatfaj, allatnev, allatkor, allatfajta, allativar, allatleiras, allatkep) VALUES (?, ?, ?, ?, ?, ?, ?)";
   const values = [
     req.body.allatfaj,
     req.body.allatnev,
@@ -90,6 +105,7 @@ app.post("/create", (req, res) => {
     req.body.allatfajta,
     req.body.allativar,
     req.body.allatleiras,
+    allatKepPath, // Kép elérési útvonala
   ];
 
   db.query(sql, values, (err, result) => {
