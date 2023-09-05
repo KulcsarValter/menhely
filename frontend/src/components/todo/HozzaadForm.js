@@ -20,21 +20,21 @@ function HozzaadForm() {
     event.preventDefault();
 
     // Kép feltöltés a FormData segítségével
-  const formData = new FormData();
-  formData.append("allatnev", allatnev);
-  formData.append("allatfaj", allatfaj);
-  formData.append("allatkor", allatkor);
-  formData.append("allatfajta", allatfajta);
-  formData.append("allativar", allativar);
-  formData.append("allatleiras", allatleiras);
-  formData.append("allatKep", allatKep); // Kép hozzáadása
+    const formData = new FormData();
+    formData.append("allatnev", allatnev);
+    formData.append("allatfaj", allatfaj);
+    formData.append("allatkor", allatkor);
+    formData.append("allatfajta", allatfajta);
+    formData.append("allativar", allativar);
+    formData.append("allatleiras", allatleiras);
+    formData.append("allatKep", allatKep); // Kép hozzáadása
 
-  // Új állat hozzáadásának szerveroldali kérése
-  Axios.post("http://localhost:3001/create", formData, {
-    headers: {
-      "Content-Type": "multipart/form-data", // Fontos: multipart form adatok küldése
-    },
-  })
+    // Új állat hozzáadásának szerveroldali kérése
+    Axios.post("http://localhost:3001/create", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data", // Fontos: multipart form adatok küldése
+      },
+    })
       .then((res) => {
         console.log(res.data);
         // Állatok frissítése (opcionális)

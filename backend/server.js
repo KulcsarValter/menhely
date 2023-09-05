@@ -3,6 +3,7 @@ const mysql = require("mysql");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const multer = require("multer");
+const path = require("path");
 
 const app = express();
 app.use(express.json());
@@ -94,7 +95,7 @@ app.post("/admin", (req, res) => {
 
 app.post("/create", upload.single("allatKep"), (req, res) => {
   // Kép elérési útvonala
-  const allatKepPath = req.file ? req.file.path : null;
+  const allatKepPath = req.file ? "public/images/" + req.file.filename : null;
 
   const sql =
     "INSERT INTO allatok (allatfaj, allatnev, allatkor, allatfajta, allativar, allatleiras, allatkep) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -149,6 +150,8 @@ app.post("/register", (req, res) => {
     }
   );
 });
+
+app.use("/public", express.static(path.join(__dirname, "public")));
 
 app.listen(3001, () => {
   console.log("App is running on port 3001");
