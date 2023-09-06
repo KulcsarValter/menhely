@@ -8,7 +8,8 @@ import Macskak from "./components/macskak/Macskak";
 import OrokbefogadasForm from "./components/orokbefogadasform/OrokbefogadasForm";
 import Fileupload from "./components/fileupload/Fileupload";
 import Todo from "./components/todo/Todo";
-import HozzaadForm from "./components/todo/HozzaadForm"
+import HozzaadForm from "./components/todo/HozzaadForm";
+import ModositForm from "./components/todo/ModositForm";
 
 import "./Dropdown.css";
 
@@ -29,7 +30,9 @@ function App() {
         <Route path="/kapcsolat" element={<Kapcsolat />}></Route>
         <Route path="/orokbefogadas" element={<OrokbefogadasForm />}></Route>
         <Route path="/fileupload" element={<Fileupload />}></Route>
-        <Route path="/todo/HozzaadForm" element={<HozzaadForm />}></Route> </Routes>
+        <Route path="/todo/HozzaadForm" element={<HozzaadForm />}></Route>{" "}
+        <Route path="/update/:allatid" element={<ModositForm />}></Route>
+      </Routes>
     </BrowserRouter>
   );
 }

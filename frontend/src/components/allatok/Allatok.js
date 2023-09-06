@@ -1,6 +1,7 @@
 import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Navbar from "../navbar/Navbar";
 
 function Allatok() {
   const [allatok, setAllatok] = useState([]);
@@ -14,42 +15,8 @@ function Allatok() {
 
   return (
     <div>
+      <Navbar />
       <div>
-        <nav className="navbar">
-          <ul>
-            <li>
-              <Link to="/" className="btn btn-info w-75">
-                Rólunk
-              </Link>
-            </li>
-            <li>
-              <Link to="/admin" className="btn btn-info w-75">
-                Admin
-              </Link>
-            </li>
-            <li>
-              <Link className="btn btn-info w-75">Kisállataink</Link>
-              <ul>
-                <li>
-                  <Link to="/allatok" className="btn btn-info w-75">
-                    Összes kisállat
-                  </Link>
-                  <Link to="/kutyak" className="btn btn-info w-75">
-                    Kutyáink
-                  </Link>
-                  <Link to="/macskak" className="btn btn-info w-75">
-                    Macskáink
-                  </Link>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <Link to="/kapcsolat" className="btn btn-info w-75">
-                Kapcsolat
-              </Link>
-            </li>
-          </ul>
-        </nav>
         <h2 className="text-center">
           Tekintse meg a menhelyünkön lévő kutyákat és macskákat!
         </h2>

@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const storage = multer.diskStorage({
   destination: "public/images",
   filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1E9);
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
     cb(null, file.fieldname + "-" + uniqueSuffix + file.originalname);
   },
 });
@@ -115,6 +115,27 @@ app.post("/create", upload.single("allatKep"), (req, res) => {
     }
 
     return res.json({ message: "Hozzáadás sikeres" });
+  });
+});
+
+app.put("/update/:allatid", (req, res) => {
+  const sql =
+    "UPDATE allatok set `allatfaj` = ?, `allatnev` = ?,   `allatkor` = ?, `allatfajta` = ?, `allativar` = ?, `allatleiras` = ? WHERE allatid = ?";
+  const values = [
+    req.body.allatfaj,
+    req.body.allatnev,
+    req.body.allatkor,
+    req.body.allatfajta,
+    req.body.allativar,
+    req.body.allatleiras,
+  ];
+  const allatid = req.params.allatid;
+  db.query(sql, [...values, allatid], (err, data) => {
+    if (err) {
+      return res.json(error);
+    } else {
+      return res.json(data);
+    }
   });
 });
 

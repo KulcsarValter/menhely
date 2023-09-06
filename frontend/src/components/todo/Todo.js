@@ -25,38 +25,54 @@ function Todo() {
 
   return (
     <div className="d-flex vh-100 justify-content-center align-items-center">
-      <div className="w-40 bg-white rounded p-3">
+      <div className="w-50 bg-white rounded p-3">
         <table className="table">
           <thead>
             <tr>
+              <th>Id</th>
               <th>Faj</th>
               <th>Név</th>
+              <th>Kor</th>
+              <th>Fajta</th>
+              <th>Ivar</th>
+              <th>Státusza</th>
             </tr>
           </thead>
           <tbody>
             {allat.map((data, i) => (
               <tr key={i}>
+                <td>{data.allatid}</td>
                 <td>{data.allatfaj}</td>
                 <td>{data.allatnev}</td>
+                <td>{data.allatkor}</td>
+                <td>{data.allatfajta}</td>
+                <td>{data.allativar}</td>
+                <td>{data.allatstatusz}</td>
                 <td>
-                  <button className="btn btn-primary w-20">Módosítás</button>
-                  <button
-                    className="btn btn-danger mx-2 w-20"
-                    onClick={() => handleDelete(data.allatid)} // Új sor
-                  >
-                    Törlés
-                  </button>
-                  <Link to="/todo/HozzaadForm" className="btn btn-success mx-2 w-25">
-                    Hozzáadás
-                  </Link>
-                  <Link to="/fileupload" className="btn btn-success w-25">
-                    Kép feltöltése
-                  </Link>
+                  <div>
+                    <Link
+                      to={`/update/${data.allatid}`}
+                      className="btn btn-success mx-4 w-30"
+                    >
+                      Módosítás
+                    </Link>
+                    <button
+                      className="btn btn-danger mx-2 w-30"
+                      onClick={() => handleDelete(data.allatid)} // Új sor
+                    >
+                      Törlés
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+        <div className="tc">
+          <Link to="/todo/HozzaadForm" className="btn btn-success w-100">
+            Hozzáadás
+          </Link>
+        </div>
       </div>
     </div>
   );
