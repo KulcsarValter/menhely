@@ -32,7 +32,11 @@ function OrokbefogadasForm() {
   };
 
   useEffect(() => {
+<<<<<<< HEAD
     Axios.get("http://localhost:3001/availablePetNames")
+=======
+    Axios.get('http://localhost:3001/availablePetNames')
+>>>>>>> 888df8bf6c51bc099981bc8731894c9ee9c05fa7
       .then((response) => {
         setAvailablePetNames(response.data);
       })
@@ -87,13 +91,18 @@ function OrokbefogadasForm() {
             name="kisallatnev"
             className="form-control"
             required
+            value={kisallatnev} // Használjuk a value prop-ot a kiválasztott érték beállításához
             onChange={(e) => {
               setKisallatnev(e.target.value);
             }}
           >
+<<<<<<< HEAD
             <option value="" disabled selected>
               Válassza ki kiskedvencét!
             </option>
+=======
+            <option value='' disabled>Válassza ki kiskedvencét!</option>
+>>>>>>> 888df8bf6c51bc099981bc8731894c9ee9c05fa7
             {availablePetNames.map((name) => (
               <option key={name} value={name}>
                 {name}

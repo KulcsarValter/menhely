@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../navbar/Navbar";
@@ -31,6 +31,10 @@ function Allatok() {
               <p>Neme: {data.allativar}</p>
               <p>Kora: {data.allatkor} éves</p>
               <p>Leírás: {data.allatleiras}</p>
+              {/* Kép megjelenítése */}
+              {data.allatkep && (
+                <img src={`http://localhost:3001/${data.allatkep}`} alt={data.allatnev} />
+              )}
             </div>
           </div>
         ))}
