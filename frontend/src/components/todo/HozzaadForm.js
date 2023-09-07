@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom"; // useNavigate importálása
+import { Link } from "react-router-dom";
 
 function HozzaadForm() {
   const [allatnev, setAllatnev] = useState("");
@@ -10,7 +11,7 @@ function HozzaadForm() {
   const [allativar, setAllativar] = useState("");
   const [allatleiras, setAllatleiras] = useState("");
   const [allatKep, setAllatKep] = useState(null);
-  
+
   const navigate = useNavigate(); // useNavigate használata
 
   // Kép feltöltés kezelése
@@ -43,7 +44,7 @@ function HozzaadForm() {
         // Állatok frissítése (opcionális)
 
         // Sikeres hozzáadás után átirányítás a "todo" oldalra
-        navigate('/todo');
+        navigate("/todo");
       })
       .catch((err) => console.log(err));
   }
@@ -113,6 +114,9 @@ function HozzaadForm() {
           <button className="btn btn-outline-warning w-100 mt-3" type="submit">
             Hozzáadás
           </button>
+          <Link to="/todo/" className="btn btn-success mt-2 w-100">
+            Vissza
+          </Link>
         </form>
       </div>
     </div>

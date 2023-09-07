@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function ModositForm() {
   const [allatnev, setAllatnev] = useState("");
@@ -93,6 +94,9 @@ function ModositForm() {
           <button className="btn btn-outline-warning w-100 mt-3" type="submit">
             Módosítás
           </button>
+          <Link to="/todo/" className="btn btn-success mt-2 w-100">
+            Vissza
+          </Link>
         </form>
       </div>
     </div>

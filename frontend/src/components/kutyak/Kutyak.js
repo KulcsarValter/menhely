@@ -1,10 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-<<<<<<< HEAD
-import Navbar from "../navbar/Navbar";
-=======
->>>>>>> 888df8bf6c51bc099981bc8731894c9ee9c05fa7
 
 function Kutyak() {
   const [kutyak, setKutyak] = useState([]);
@@ -18,10 +14,6 @@ function Kutyak() {
 
   return (
     <div>
-<<<<<<< HEAD
-      <Navbar />
-      <div>
-=======
       <div>
         <nav className="navbar">
           <ul>
@@ -62,7 +54,6 @@ function Kutyak() {
             </li>
           </ul>
         </nav>
->>>>>>> 888df8bf6c51bc099981bc8731894c9ee9c05fa7
         <h2 className="text-center">
           Tekintse meg a menhelyünkön lévő kutyákat és macskákat!
         </h2>
@@ -76,16 +67,6 @@ function Kutyak() {
             <p>Neme: {data.allativar}</p>
             <p>Kora: {data.allatkor} éves</p>
             <p>Leírás: {data.allatleiras}</p>
-<<<<<<< HEAD
-=======
-            {/* Kép megjelenítése */}
-            {data.allatkep && (
-              <img
-                src={`http://localhost:3001/${data.allatkep}`}
-                alt={data.allatnev}
-              />
-            )}
->>>>>>> 888df8bf6c51bc099981bc8731894c9ee9c05fa7
           </div>
         ))}
       </div>
