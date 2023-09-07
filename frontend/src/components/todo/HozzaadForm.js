@@ -59,6 +59,7 @@ function HozzaadForm() {
             <input
               className="form-control"
               type="text"
+              required
               value={allatnev}
               onChange={(e) => setAllatnev(e.target.value)}
             />
@@ -68,6 +69,7 @@ function HozzaadForm() {
             <input
               className="form-control"
               type="text"
+              required
               value={allatfaj}
               onChange={(e) => setAllatfaj(e.target.value)}
             />
@@ -77,6 +79,7 @@ function HozzaadForm() {
             <input
               className="form-control"
               type="text"
+              required
               value={allatkor}
               onChange={(e) => setAllatkor(e.target.value)}
             />
@@ -86,6 +89,7 @@ function HozzaadForm() {
             <input
               className="form-control"
               type="text"
+              required
               value={allatfajta}
               onChange={(e) => setAllatfajta(e.target.value)}
             />
@@ -95,6 +99,7 @@ function HozzaadForm() {
             <input
               className="form-control"
               type="text"
+              required
               value={allativar}
               onChange={(e) => setAllativar(e.target.value)}
             />
@@ -103,6 +108,7 @@ function HozzaadForm() {
             <label>Leírás:</label>
             <textarea
               className="form-control"
+              required
               value={allatleiras}
               onChange={(e) => setAllatleiras(e.target.value)}
             />
