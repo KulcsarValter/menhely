@@ -67,6 +67,9 @@ function Kutyak() {
             <p>Neme: {data.allativar}</p>
             <p>Kora: {data.allatkor} éves</p>
             <p>Leírás: {data.allatleiras}</p>
+            {data.allatkep && (
+                <img src={`http://localhost:3001/${data.allatkep}`} alt={data.allatnev} />
+              )}
           </div>
         ))}
       </div>
