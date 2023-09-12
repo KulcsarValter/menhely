@@ -11,25 +11,62 @@ function OrokbefogadasForm() {
   const [availablePetNames, setAvailablePetNames] = useState([]);
 
   const register = (e) => {
-    e.preventDefault();
-    Axios.post("http://localhost:3001/register", {
-      email: email,
-      nev: nev,
-      telefon: telefon,
-      kisallatnev: kisallatnev,
+  e.preventDefault();
+
+  Axios.get(`http://localhost:3001/allatok/${kisallatnev}`)
+    .then((response) => {
+      const allat = response.data[0];
+
+      if (allat && allat.allatstatusz === 1) {
+        setRegisterStatus("Ez az állat már örökbefogadásra került.");
+      } else {
+        Axios.post("http://localhost:3001/register", {
+          email: email,
+          nev: nev,
+          telefon: telefon,
+          kisallatnev: kisallatnev,
+        })
+          .then((response) => {
+            if (response.data.message) {
+              setRegisterStatus(response.data.message);
+
+              // Frissítse az állat állapotát true-ra
+              if (allat) {
+                Axios.put(`http://localhost:3001/updateStatus/${allat.allatid}`)
+                  .then(() => {
+                    // Átirányítás vagy további teendők, ha szükséges
+                  })
+                  .catch((error) => {
+                    console.error(error);
+                  });
+
+                // Az örökbefogadott táblába is beilleszti az adatokat
+                Axios.post("http://localhost:3001/orokbefogadott", {
+                  allatId: allat.allatid,
+                  orokbefogadoId: response.data.insertId, // Az örökbefogadó azonosítója
+                })
+                  .then(() => {
+                    // Az örökbefogadott adatok sikeresen beillesztve
+                  })
+                  .catch((error) => {
+                    console.error(error);
+                  });
+              }
+            } else {
+              setRegisterStatus("Sikeres Örökbefogadás");
+            }
+          })
+          .catch((error) => {
+            console.error(error);
+            setRegisterStatus("Hiba történt az örökbefogadás során.");
+          });
+      }
     })
-      .then((response) => {
-        if (response.data.message) {
-          setRegisterStatus(response.data.message);
-        } else {
-          setRegisterStatus("Sikeres Örökbefogadás");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-        setRegisterStatus("Hiba történt az örökbefogadás során.");
-      });
-  };
+    .catch((error) => {
+      console.error(error);
+      setRegisterStatus("Hiba történt az állat lekérdezése során.");
+    });
+};
 
   useEffect(() => {
     Axios.get("http://localhost:3001/availablePetNames")
@@ -40,6 +77,24 @@ function OrokbefogadasForm() {
         console.error(error);
       });
   }, []);
+
+  useEffect(() => {
+    if (kisallatnev) {
+      Axios.get(`http://localhost:3001/allatok/${kisallatnev}`)
+        .then((response) => {
+          const allat = response.data[0];
+          if (allat && allat.allatstatusz === 1) {
+            setRegisterStatus("Ez az állat már örökbefogadásra került.");
+          } else {
+            setRegisterStatus("");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+          setRegisterStatus("Hiba történt az állat lekérdezése során.");
+        });
+    }
+  }, [kisallatnev]);
 
   return (
     <div className="d-flex justify-content-center vh-100 align-items-center">
@@ -87,7 +142,7 @@ function OrokbefogadasForm() {
             name="kisallatnev"
             className="form-control"
             required
-            value={kisallatnev} // Újra hozzáadtam a value prop-ot
+            value={kisallatnev}
             onChange={(e) => {
               setKisallatnev(e.target.value);
             }}

@@ -172,6 +172,32 @@ app.post("/register", (req, res) => {
   );
 });
 
+app.put("/updateStatus/:allatid", (req, res) => {
+  const allatid = req.params.allatid;
+  const sql = "UPDATE allatok SET allatstatusz = 1 WHERE allatid = ?";
+  db.query(sql, [allatid], (err, result) => {
+    if (err) {
+      return res.json(err);
+    } else {
+      return res.json({ message: "Sikeres állatstátusz frissítés" });
+    }
+  });
+});
+
+app.get("/allatok/:allatnev", (req, res) => {
+  const allatnev = req.params.allatnev;
+  const sql = "SELECT * FROM allatok WHERE allatnev = ?";
+  db.query(sql, [allatnev], (err, data) => {
+    if (err) {
+      return res.json(err);
+    } else {
+      return res.json(data);
+    }
+  });
+});
+
+
+
 app.use("/public", express.static(path.join(__dirname, "public")));
 
 app.listen(3001, () => {
