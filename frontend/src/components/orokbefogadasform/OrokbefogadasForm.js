@@ -87,11 +87,12 @@ function OrokbefogadasForm() {
             name="kisallatnev"
             className="form-control"
             required
+            value={kisallatnev} // Újra hozzáadtam a value prop-ot
             onChange={(e) => {
               setKisallatnev(e.target.value);
             }}
           >
-            <option value="" disabled selected>
+            <option value="" disabled>
               Válassza ki kiskedvencét!
             </option>
             {availablePetNames.map((name) => (
