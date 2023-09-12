@@ -52,12 +52,12 @@ function Todo() {
                   <div>
                     <Link
                       to={`/update/${data.allatid}`}
-                      className="btn btn-success mx-5 w-30"
+                      className="btn btn-success mx-3 w-35"
                     >
                       Módosítás
                     </Link>
                     <button
-                      className="btn btn-danger w-30"
+                      className="btn btn-danger w-35"
                       onClick={() => handleDelete(data.allatid)} // Új sor
                     >
                       Törlés
