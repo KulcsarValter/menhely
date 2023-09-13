@@ -184,6 +184,25 @@ app.put("/updateStatus/:allatid", (req, res) => {
   });
 });
 
+app.put("/orokbefogadott/:allatid", (req, res) => {
+  const allatid = req.body.allatid;
+  const orokbefogadoid = req.body.orokbefogadoid;
+  const allatnev = req.body.allatnev;
+
+  db.query(
+    "INSERT INTO orokbefogadott (allatid, orokbefogadoid, allatnev) VALUES (?, ?, ?)",
+    [allatid, orokbefogadoid, allatnev],
+    (err, result) => {
+      if (err) {
+        console.error(err);
+        res.status(500).send({ message: "Sikertelen örökbefogadás" });
+      } else {
+        res.status(200).send({ message: "Sikeres Örökbefogadás" });
+      }
+    }
+  );
+});
+
 app.get("/allatok/:allatnev", (req, res) => {
   const allatnev = req.params.allatnev;
   const sql = "SELECT * FROM allatok WHERE allatnev = ?";
@@ -195,8 +214,6 @@ app.get("/allatok/:allatnev", (req, res) => {
     }
   });
 });
-
-
 
 app.use("/public", express.static(path.join(__dirname, "public")));
 

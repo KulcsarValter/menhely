@@ -11,62 +11,67 @@ function OrokbefogadasForm() {
   const [availablePetNames, setAvailablePetNames] = useState([]);
 
   const register = (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  Axios.get(`http://localhost:3001/allatok/${kisallatnev}`)
-    .then((response) => {
-      const allat = response.data[0];
+    Axios.get(`http://localhost:3001/allatok/${kisallatnev}`)
+      .then((response) => {
+        const allat = response.data[0];
 
-      if (allat && allat.allatstatusz === 1) {
-        setRegisterStatus("Ez az állat már örökbefogadásra került.");
-      } else {
-        Axios.post("http://localhost:3001/register", {
-          email: email,
-          nev: nev,
-          telefon: telefon,
-          kisallatnev: kisallatnev,
-        })
-          .then((response) => {
-            if (response.data.message) {
-              setRegisterStatus(response.data.message);
-
-              // Frissítse az állat állapotát true-ra
-              if (allat) {
-                Axios.put(`http://localhost:3001/updateStatus/${allat.allatid}`)
-                  .then(() => {
-                    // Átirányítás vagy további teendők, ha szükséges
-                  })
-                  .catch((error) => {
-                    console.error(error);
-                  });
-
-                // Az örökbefogadott táblába is beilleszti az adatokat
-                Axios.post("http://localhost:3001/orokbefogadott", {
-                  allatId: allat.allatid,
-                  orokbefogadoId: response.data.insertId, // Az örökbefogadó azonosítója
-                })
-                  .then(() => {
-                    // Az örökbefogadott adatok sikeresen beillesztve
-                  })
-                  .catch((error) => {
-                    console.error(error);
-                  });
-              }
-            } else {
-              setRegisterStatus("Sikeres Örökbefogadás");
-            }
+        if (allat && allat.allatstatusz === 1) {
+          setRegisterStatus("Ez az állat már örökbefogadásra került.");
+        } else {
+          Axios.post("http://localhost:3001/register", {
+            email: email,
+            nev: nev,
+            telefon: telefon,
+            kisallatnev: kisallatnev,
           })
-          .catch((error) => {
-            console.error(error);
-            setRegisterStatus("Hiba történt az örökbefogadás során.");
-          });
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-      setRegisterStatus("Hiba történt az állat lekérdezése során.");
-    });
-};
+            .then((response) => {
+              if (response.data.message) {
+                setRegisterStatus(response.data.message);
+
+                // Frissítse az állat állapotát true-ra
+                if (allat) {
+                  Axios.put(
+                    `http://localhost:3001/updateStatus/${allat.allatid}`
+                  )
+                    .then(() => {
+                      // Átirányítás vagy további teendők, ha szükséges
+                    })
+                    .catch((error) => {
+                      console.error(error);
+                    });
+
+                  // Az örökbefogadott táblába is beilleszti az adatokat
+                  Axios.put(
+                    `http://localhost:3001/orokbefogadott/${allat.allatid}`,
+                    {
+                      allatid: allat.allatid,
+                      orokbefogadoid: response.data.insertid, // Az örökbefogadó azonosítója
+                    }
+                  )
+                    .then(() => {
+                      // Az örökbefogadott adatok sikeresen beillesztve
+                    })
+                    .catch((error) => {
+                      console.error(error);
+                    });
+                }
+              } else {
+                setRegisterStatus("Sikeres Örökbefogadás");
+              }
+            })
+            .catch((error) => {
+              console.error(error);
+              setRegisterStatus("Hiba történt az örökbefogadás során.");
+            });
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        setRegisterStatus("Hiba történt az állat lekérdezése során.");
+      });
+  };
 
   useEffect(() => {
     Axios.get("http://localhost:3001/availablePetNames")
