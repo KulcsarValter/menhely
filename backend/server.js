@@ -166,7 +166,7 @@ app.post("/register", (req, res) => {
         console.error(err);
         res.status(500).send({ message: "Sikertelen örökbefogadás" });
       } else {
-        res.status(200).send({ message: "Sikeres Örökbefogadás" });
+        res.status(200).send({ message: "Sikeres Örökbefogadás", insertid: result.insertId });
       }
     }
   );
