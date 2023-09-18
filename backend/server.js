@@ -203,6 +203,17 @@ app.put("/orokbefogadott/:allatid", (req, res) => {
   );
 });
 
+app.get("/orokbefogadott", (req, res) => {
+  let sql = "SELECT * FROM allatok where allatstatusz = 1";
+  db.query(sql, (err, data) => {
+    if (err) {
+      return res.json(err);
+    } else {
+      return res.json(data);
+    }
+  });
+});
+
 app.get("/allatok/:allatnev", (req, res) => {
   const allatnev = req.params.allatnev;
   const sql = "SELECT * FROM allatok WHERE allatnev = ?";

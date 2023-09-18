@@ -49,7 +49,6 @@ function OrokbefogadasForm() {
                       allatid: allat.allatid,
                       orokbefogadoid: response.data.insertid, // Az örökbefogadó azonosítója
                       allatnev: allat.allatnev, // Az állat neve
-
                     }
                   )
                     .then(() => {

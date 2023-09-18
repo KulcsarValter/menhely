@@ -41,6 +41,11 @@ function Navbar() {
               Kapcsolat
             </Link>
           </li>
+          <li>
+            <Link to="/orokbrfogadott" className="btn btn-info w-75">
+              Örökbefogadott
+            </Link>
+          </li>
         </ul>
       </nav>
     </div>

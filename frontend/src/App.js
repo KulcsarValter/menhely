@@ -10,6 +10,7 @@ import Fileupload from "./components/fileupload/Fileupload";
 import Todo from "./components/todo/Todo";
 import HozzaadForm from "./components/todo/HozzaadForm";
 import ModositForm from "./components/todo/ModositForm";
+import OrokbefogadottForm from "./components/todo/OrokbefogadottForm";
 
 import "./Dropdown.css";
 
@@ -32,6 +33,7 @@ function App() {
         <Route path="/fileupload" element={<Fileupload />}></Route>
         <Route path="/todo/HozzaadForm" element={<HozzaadForm />}></Route>{" "}
         <Route path="/update/:allatid" element={<ModositForm />}></Route>
+        <Route path="/orokbrfogadott" element={<OrokbefogadottForm />}></Route>
       </Routes>
     </BrowserRouter>
   );
