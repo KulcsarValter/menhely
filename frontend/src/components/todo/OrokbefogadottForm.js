@@ -1,50 +1,59 @@
-import React, { useState, useEffect } from "react";
-import Axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import Navbar from "../navbar/Navbar";
 
-function Todo() {
-  const [allat, setAllat] = useState([]);
+function Allatok() {
+  const [allatok, setAllatok] = useState([]);
 
   useEffect(() => {
-    Axios.get("http://localhost:3001/orokbefogadott")
-      .then((res) => setAllat(res.data))
+    axios
+      .get("http://localhost:3001/orokbefogadott")
+      .then((res) => setAllatok(res.data))
       .catch((err) => console.log(err));
-  }, []); // Üres függőséglista, csak a komponens első renderelésekor fut le
+  }, []);
 
   return (
-    <div className="d-flex vh-100 justify-content-center align-items-center">
-      <div className="w-50 bg-white rounded p-3">
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Név</th>
-              <th>Kor</th>
-              <th>Fajta</th>
-              <th>Ivar</th>
-            </tr>
-          </thead>
-          <tbody>
-            {allat.map((data, i) => (
-              <tr key={i}>
-                <td>{data.allatnev}</td>
-                <td>{data.allatkor} éves</td>
-                <td>{data.allatfajta}</td>
-                <td>{data.allativar}</td>
-                <td>
-                  <div></div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <div className="tc">
-          <Link to="/" className="btn btn-success mt-2 w-100">
-            Kilépés
-          </Link>
-        </div>
+    <div>
+      <Navbar />
+      <div>
+        <h2 className="text-center">
+          Tekintse meg örökbefogadott kedvenceinket!
+        </h2>
+      </div>
+      <div className="d-flex justify-content-center my-5">
+        {allatok.map((data, i) => (
+          <div key={i}>
+            <div className="pa1 kartyak grow ma2 br2 my-5" key={i}>
+              {data.allatkep && (
+                <img
+                  src={`http://localhost:3001/${data.allatkep}`}
+                  alt={data.allatnev}
+                  height={200}
+                  width={300}
+                />
+              )}
+              <p>Állat neve: {data.allatnev}</p>
+              <p>Faj: {data.allatfaj}</p>
+              <p>Fajta: {data.allatfajta}</p>
+              <p>Neme: {data.allativar}</p>
+              <p>Kora: {data.allatkor} éves</p>
+              <p>Leírás: {data.allatleiras}</p>
+              {/* Kép megjelenítése */}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="d-flex justify-content-center">
+        <Link
+          to="/orokbefogadas"
+          className="d-flex justify-content-center btn btn-outline-info"
+        >
+          Örökbefogadás
+        </Link>
       </div>
     </div>
   );
 }
 
-export default Todo;
+export default Allatok;
