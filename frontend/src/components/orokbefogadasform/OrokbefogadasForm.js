@@ -16,10 +16,7 @@ function OrokbefogadasForm() {
     Axios.get(`http://localhost:3001/allatok/${kisallatnev}`)
       .then((response) => {
         const allat = response.data[0];
-
-        if (allat && allat.allatstatusz === 1) {
-          setRegisterStatus("Ez az állat már örökbefogadásra került.");
-        } else {
+        
           Axios.post("http://localhost:3001/register", {
             email: email,
             nev: nev,
@@ -66,7 +63,7 @@ function OrokbefogadasForm() {
               console.error(error);
               setRegisterStatus("Hiba történt az örökbefogadás során.");
             });
-        }
+        
       })
       .catch((error) => {
         console.error(error);

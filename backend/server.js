@@ -71,7 +71,7 @@ app.get("/macskak", (req, res) => {
 });
 
 app.get("/availablePetNames", (req, res) => {
-  const sql = "SELECT allatnev FROM allatok";
+  const sql = "SELECT allatnev FROM allatok WHERE allatstatusz = 0" ;
   db.query(sql, (err, data) => {
     if (err) {
       return res.json(err);
