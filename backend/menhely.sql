@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2023. Sze 14. 17:29
+-- Létrehozás ideje: 2023. Okt 01. 19:31
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.2.4
 
@@ -62,9 +62,9 @@ CREATE TABLE `allatok` (
 --
 
 INSERT INTO `allatok` (`allatid`, `allatfaj`, `allatnev`, `allatkor`, `allatfajta`, `allativar`, `allatstatusz`, `allatleiras`, `allatkep`) VALUES
-(14, 'Kutya', 'Rex', 3, 'Németjuhász', 'Kan', 0, 'Ez egy kutya', 'public/images/Rex.jpg'),
-(15, 'Macska', 'Cirmi', 1, 'Házimacska', 'Nőstény', 1, 'Ez egy macska', 'public/images/Cirmi.jpg'),
-(16, 'Kutya', 'Tyson', 1, 'Rottweiler', 'Kan', 0, 'Ez egy kutya.', 'public/images/allatKep-1694451006908-964839390allatKep-1693937811840-696249611Tyson.jpg');
+(14, 'Kutya', 'Rex', 3, 'Németjuhász', 'Kan', 1, 'Rex, amikor nem fúrja magát éppen az öledbe, kezedbe, akkor megmutatkozik a határtalan huncutsága. Vigyázat, a csokibarna kisfiú függőséget okoz. Nyugodtan lehet tolongani, van vele feladat.', 'public/images/Rex.jpg'),
+(15, 'Macska', 'Cirmi', 1, 'Házimacska', 'Nőstény', 1, 'Barátságos cica. Mintha mindig is ismert volna minket, nem fél, azonnal jön, hogy simogassuk és foglalkozzunk vele. Lakásban érzi magát a legjobban,de a szabadban is feltalálja magát.', 'public/images/Cirmi.jpg'),
+(16, 'Kutya', 'Tyson', 1, 'Rottweiler', 'Kan', 0, 'Tyson kedves, érdeklődő, szereti az emberek társaságát. A simogatást, hűséggel jutalmazza.', 'public/images/allatKep-1694451006908-964839390allatKep-1693937811840-696249611Tyson.jpg');
 
 -- --------------------------------------------------------
 
@@ -85,24 +85,8 @@ CREATE TABLE `orokbefogado` (
 --
 
 INSERT INTO `orokbefogado` (`orokbefogadoid`, `nev`, `email`, `telefon`, `kisallatnev`) VALUES
-(1, 'Kulcsár Valter', 'kulcsarvalter1975@gmail.com', '06301845627', 'Rex'),
-(2, 'Kulcsár Valter2', 'kulcsarvalter21975@gmail.com', '06301845627', 'Rex'),
-(3, 'Kulcsár Valter3', 'kulcsarvalter31975@gmail.com', '06301845627', 'Cirmi'),
-(4, 'Kulcsár Valter3', 'kulcsarvalter31975@gmail.com', '06301845627', 'Tyson'),
-(5, 'Kulcsár Valter3', 'kulcsarvalter31975@gmail.com', '06301845627', 'Tyson'),
-(6, 'Kulcsár Valter3', 'kulcsarvalter31975@gmail.com', '06301845627', 'Rex'),
-(7, 'Kulcsár Valter3', 'kulcsarvalter31975@gmail.com', '06301845627', 'Cirmi'),
-(8, 'Kis Ferenc', 'kisferenc@gmail.com', '11111111111', 'Rex'),
-(9, 'Nagy Ervin', 'kisferenc@gmail.com', '222222222222222', 'Cirmi'),
-(10, 'Nagy Ervin', 'kisferenc@gmail.com', '222222222222222', 'Tyson'),
-(11, 'Valter36', 'kulcsarvalter1975@gmail.com', '06301845627', 'Rex'),
-(12, 'Valter36', 'kulcsarvalter1975@gmail.com', '06301845627', 'Cirmi'),
-(13, 'Valter36', 'kulcsarvalter1975@gmail.com', '06301845627', 'Tyson'),
-(14, 'Valter36', 'kulcsarvalter1975@gmail.com', '06301845627', 'Tyson'),
-(15, 'Valter36', 'kulcsarvalter1975@gmail.com', '06301845627', 'Rex'),
-(16, 'Kulcsár Valter', 'kulcsarvalter1975@gmail.com', '06301845627', 'Cirmi'),
-(17, 'Kulcsár Valter', 'kulcsarvalter1975@gmail.com', '06301845627', 'Rex'),
-(18, 'Kulcsár Valter', 'kulcsarvalter1975@gmail.com', '06301845627', 'Cirmi');
+(19, 'admin', '2021579@dszcberegszaszi.hu', '06301845627', 'Rex'),
+(20, 'Kulcsár Valter', 'nagy@gmail.com', '7394341', 'Cirmi');
 
 -- --------------------------------------------------------
 
@@ -121,7 +105,8 @@ CREATE TABLE `orokbefogadott` (
 --
 
 INSERT INTO `orokbefogadott` (`allatid`, `orokbefogadoid`, `allatnev`) VALUES
-(15, NULL, NULL);
+(14, 19, 'Rex'),
+(15, 20, 'Cirmi');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -160,7 +145,7 @@ ALTER TABLE `allatok`
 -- AUTO_INCREMENT a táblához `orokbefogado`
 --
 ALTER TABLE `orokbefogado`
-  MODIFY `orokbefogadoid` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `orokbefogadoid` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Megkötések a kiírt táblákhoz
@@ -171,7 +156,7 @@ ALTER TABLE `orokbefogado`
 --
 ALTER TABLE `orokbefogadott`
   ADD CONSTRAINT `orokbefogadott_ibfk_1` FOREIGN KEY (`orokbefogadoid`) REFERENCES `orokbefogado` (`orokbefogadoid`),
-  ADD CONSTRAINT `orokbefogadott_ibfk_2` FOREIGN KEY (`allatId`) REFERENCES `allatok` (`allatid`);
+  ADD CONSTRAINT `orokbefogadott_ibfk_2` FOREIGN KEY (`allatid`) REFERENCES `allatok` (`allatid`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
