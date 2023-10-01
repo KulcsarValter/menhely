@@ -17,26 +17,10 @@ code {
     monospace;
 }
 
-.navbar {
-  height: 6vh;
-}
-
 .adminform {
-  background-color: rgba(6, 128, 204, 0.4);
-}
-
-.rolunk {
-  background-color: rgba(102, 255, 0, 0.1);
-}
-
-.kartyak {
   background-color: rgba(6, 128, 204, 0.4);
 }
 
 .orokbefogadform {
   background-color: rgba(6, 128, 204, 0.4);
-}
-
-.kapcsolat {
-  background-color: rgba(255, 238, 0, 0.1);
 }

@@ -11,8 +11,10 @@ import Todo from "./components/todo/Todo";
 import HozzaadForm from "./components/todo/HozzaadForm";
 import ModositForm from "./components/todo/ModositForm";
 import OrokbefogadottForm from "./components/todo/OrokbefogadottForm";
-
-import "./Dropdown.css";
+import Onkentes from "./components/segitseg/Onkentes";
+import IdeiglenesBefogado from "./components/segitseg/IdeiglenesBefogado";
+import Tamogatas from "./components/segitseg/Tamogatas";
+import Elerhetoseg from "./components/elerhetosegek/Elerhetoseg";
 
 import "tachyons";
 
@@ -34,6 +36,13 @@ function App() {
         <Route path="/todo/HozzaadForm" element={<HozzaadForm />}></Route>{" "}
         <Route path="/update/:allatid" element={<ModositForm />}></Route>
         <Route path="/orokbrfogadott" element={<OrokbefogadottForm />}></Route>
+        <Route path="/onkentes" element={<Onkentes />}></Route>
+        <Route
+          path="/ideiglenesBefogado"
+          element={<IdeiglenesBefogado />}
+        ></Route>
+        <Route path="/tamogatas" element={<Tamogatas />}></Route>
+        <Route path="/elerhetoseg" element={<Elerhetoseg />}></Route>
       </Routes>
     </BrowserRouter>
   );

@@ -57,7 +57,7 @@ function Todo() {
                       Módosítás
                     </Link>
                     <button
-                      className="btn btn-danger w-35"
+                      className="btn btn-danger mr w-35"
                       onClick={() => handleDelete(data.allatid)} // Új sor
                     >
                       Törlés
@@ -69,10 +69,16 @@ function Todo() {
           </tbody>
         </table>
         <div className="tc">
-          <Link to="/todo/HozzaadForm" className="btn btn-success w-100">
+          <Link
+            to="/todo/HozzaadForm"
+            className="pa2 bg-green link ba br2 db w-100 mb2 hover-yellow hover-bg-dark-green"
+          >
             Hozzáadás
           </Link>
-          <Link to="/" className="btn btn-success mt-2 w-100">
+          <Link
+            to="/"
+            className="pa2 bg-light-blue link ba br2 db w-100 hover-yellow hover-bg-dark-blue"
+          >
             Kilépés
           </Link>
         </div>

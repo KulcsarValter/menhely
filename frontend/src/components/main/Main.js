@@ -1,28 +1,35 @@
 import React from "react";
 import Navbar from "../navbar/Navbar";
+import "./Main.css";
+
 const Main = () => {
   return (
     <div>
       <Navbar />
-      <div>
-        <div className="d-flex justify-content-center text-center mt-5">
+      <div className="flex">
+        <div className="flex justify-center items-center mt5 ">
           <section className="w-50">
-            <div className="rolunk ba bw1 pa3 br3">
-              <h2 className="fejlec">Rólunk</h2>
+            <div className="rolunk ba pa3 br2">
+              <p className="fw9 tc">Rólunk</p>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Perspiciatis quibusdam ad molestiae repellendus quis harum,
-                tenetur soluta totam nostrum expedita, iure, cupiditate iusto
-                sit! Harum reprehenderit, sed eaque maxime quam veritatis quasi
-                suscipit doloribus temporibus illum cupiditate placeat ab sequi
-                earum dolores sunt blanditiis voluptates, debitis ut nulla
-                deleniti saepe. Et atque reprehenderit molestias quae repellat
-                officia ducimus. Dolorum ipsa commodi temporibus incidunt! Sequi
-                ducimus perferendis cupiditate illo facilis natus accusamus
-                ullam at quis! Tempora minima beatae optio iusto, nemo fugiat
-                hic omnis minus sequi excepturi aut doloremque in obcaecati ad
-                accusamus consequatur aperiam temporibus quo. Id velit fugiat
-                voluptate?
+                Alapítványunk tizennégy éve dolgozik az Illatos úti, árva és
+                sérült kutyák gyógyításáért, örökbefogadási esélyeinek
+                növeléséért, gazdához juttatásáért. A kuratórium tagjai
+                munkájukat elkötelezettségből, tiszteletdíj nélkül az állatok
+                iránt érzett szeretetből végzik. Tevékenységünket,
+                gazdálkodásunkat az Alapítvány Felügyelőbizottsága ellenőrzi,
+                akik szintén társadalmi munkában dolgoznak.
+              </p>
+              <p className="fw9">De kik is vagyunk, és mit csinálunk?</p>
+              <p>
+                Már 14 éve, hogy létrehoztuk a Vigyél Haza Alapítványt.
+                Hétköznapi állatbarátokként mentünk ki az Illatos útra, hogy
+                megismerjük munkájukat és megtudjuk, miben segíthetünk.
+                Szerencsénk volt, mert Dr Kozma Tamás vezető állatorvos fogadott
+                minket, és részletesen elmondta, miben számítanának a
+                közreműködésünkre. Önként vállalt feladataink már az első évtől
+                sem merültek ki abban, hogy kutyákat mentettünk és sikeres
+                örökbefogadó napokat szerveztünk a telepen.
               </p>
             </div>
           </section>

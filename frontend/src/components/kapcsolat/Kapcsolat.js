@@ -1,11 +1,12 @@
 import React from "react";
 import Navbar from "../navbar/Navbar";
+import "./Kapcsolat.css";
 
 function Kapcsolat() {
   return (
     <div>
       <Navbar />
-      <div>
+      <div className="">
         <h2 className="section-header text-center">Kapcsolat</h2>
         <div className="d-flex justify-content-center">
           <form className="form-horizontal w-25">
@@ -23,7 +24,7 @@ function Kapcsolat() {
                 type="submit"
                 value="SEND"
               >
-                Üzenet küldése
+                <a href="mailto:kulcsarvalter1975@gmail.com">Üzenet küldése</a>
               </button>
             </div>
           </form>

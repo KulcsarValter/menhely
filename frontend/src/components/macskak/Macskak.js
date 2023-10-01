@@ -2,7 +2,7 @@ import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../navbar/Navbar";
-import Card from "../Card/Card"
+import Card from "../Card/Card";
 
 function Macskak() {
   const [macskak, setMacskak] = useState([]);
@@ -17,16 +17,9 @@ function Macskak() {
   return (
     <div>
       <Navbar />
-
-      <div>
-        <h2 className="text-center">
-          Tekintse meg a menhelyünkön lévő macskákat!
-        </h2>
-      </div>
-
       <div className="d-flex justify-content-center my-5">
         {macskak.map((data, i) => (
-          <Card data={data} key={i}/>
+          <Card data={data} key={i} />
         ))}
       </div>
 

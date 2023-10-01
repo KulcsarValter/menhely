@@ -1,8 +1,9 @@
 import React from "react";
+import "./Cards.css";
 
 function Card({ data }) {
   return (
-    <div className="pa1 kartyak grow ma1 br2 my-5">
+    <div className="pa1 kartyak grow mh2 mt3 br2 grow">
       {data.allatkep && (
         <img
           src={`http://localhost:3001/${data.allatkep}`}
@@ -16,7 +17,10 @@ function Card({ data }) {
       <p>Fajta: {data.allatfajta}</p>
       <p>Neme: {data.allativar}</p>
       <p>Kora: {data.allatkor} éves</p>
-      <p>Leírás: {data.allatleiras}</p>
+      <p className="tc fw9">Leírás</p>
+      <div className="flex justify-center ba">
+        <div className="leiras w5">{data.allatleiras}</div>
+      </div>
     </div>
   );
 }

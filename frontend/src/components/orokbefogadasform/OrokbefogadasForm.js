@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { Link } from "react-router-dom";
+import "./OrokbefogadasForm.css";
 
 function OrokbefogadasForm() {
   const [email, setEmail] = useState("");
@@ -16,54 +17,51 @@ function OrokbefogadasForm() {
     Axios.get(`http://localhost:3001/allatok/${kisallatnev}`)
       .then((response) => {
         const allat = response.data[0];
-        
-          Axios.post("http://localhost:3001/register", {
-            email: email,
-            nev: nev,
-            telefon: telefon,
-            kisallatnev: kisallatnev,
-          })
-            .then((response) => {
-              if (response.data.message) {
-                setRegisterStatus(response.data.message);
 
-                // Frissítse az állat állapotát true-ra
-                if (allat) {
-                  Axios.put(
-                    `http://localhost:3001/updateStatus/${allat.allatid}`
-                  )
-                    .then(() => {
-                      // Átirányítás vagy további teendők, ha szükséges
-                    })
-                    .catch((error) => {
-                      console.error(error);
-                    });
+        Axios.post("http://localhost:3001/register", {
+          email: email,
+          nev: nev,
+          telefon: telefon,
+          kisallatnev: kisallatnev,
+        })
+          .then((response) => {
+            if (response.data.message) {
+              setRegisterStatus(response.data.message);
 
-                  // Az örökbefogadott táblába is beilleszti az adatokat
-                  Axios.put(
-                    `http://localhost:3001/orokbefogadott/${allat.allatid}`,
-                    {
-                      allatid: allat.allatid,
-                      orokbefogadoid: response.data.insertid, // Az örökbefogadó azonosítója
-                      allatnev: allat.allatnev, // Az állat neve
-                    }
-                  )
-                    .then(() => {
-                      // Az örökbefogadott adatok sikeresen beillesztve
-                    })
-                    .catch((error) => {
-                      console.error(error);
-                    });
-                }
-              } else {
-                setRegisterStatus("Sikeres Örökbefogadás");
+              // Frissítse az állat állapotát true-ra
+              if (allat) {
+                Axios.put(`http://localhost:3001/updateStatus/${allat.allatid}`)
+                  .then(() => {
+                    // Átirányítás vagy további teendők, ha szükséges
+                  })
+                  .catch((error) => {
+                    console.error(error);
+                  });
+
+                // Az örökbefogadott táblába is beilleszti az adatokat
+                Axios.put(
+                  `http://localhost:3001/orokbefogadott/${allat.allatid}`,
+                  {
+                    allatid: allat.allatid,
+                    orokbefogadoid: response.data.insertid, // Az örökbefogadó azonosítója
+                    allatnev: allat.allatnev, // Az állat neve
+                  }
+                )
+                  .then(() => {
+                    // Az örökbefogadott adatok sikeresen beillesztve
+                  })
+                  .catch((error) => {
+                    console.error(error);
+                  });
               }
-            })
-            .catch((error) => {
-              console.error(error);
-              setRegisterStatus("Hiba történt az örökbefogadás során.");
-            });
-        
+            } else {
+              setRegisterStatus("Sikeres Örökbefogadás");
+            }
+          })
+          .catch((error) => {
+            console.error(error);
+            setRegisterStatus("Hiba történt az örökbefogadás során.");
+          });
       })
       .catch((error) => {
         console.error(error);

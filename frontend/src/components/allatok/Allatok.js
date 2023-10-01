@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../navbar/Navbar";
-import Card from "../Card/Card"
-
+import Card from "../Card/Card";
 
 function Allatok() {
   const [allatok, setAllatok] = useState([]);
@@ -18,19 +17,12 @@ function Allatok() {
   return (
     <div>
       <Navbar />
-      <div>
-
-        <h2 className="text-center">
-          Tekintse meg a menhelyünkön lévő kutyákat és macskákat!
-        </h2>
-      </div>
-
       <div className="d-flex justify-content-center my-5">
         {allatok.map((data, i) => (
           <Card data={data} key={i} />
         ))}
       </div>
-      
+
       <div className="d-flex justify-content-center">
         <Link
           to="/orokbefogadas"
