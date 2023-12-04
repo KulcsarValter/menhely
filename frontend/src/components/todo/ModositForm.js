@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -12,6 +12,22 @@ function ModositForm() {
   const [allatleiras, setAllatleiras] = useState("");
   const { allatid } = useParams();
   const navigate = useNavigate();
+
+  
+  useEffect(() => {
+    // Fetch the existing data and set the initial state of the input fields
+    Axios.get("http://localhost:3001/allatok/" + allatid)
+      .then((res) => {
+        const { allatnev, allatfaj, allatkor, allatfajta, allativar, allatleiras } = res.data;
+        setAllatnev(allatnev);
+        setAllatfaj(allatfaj);
+        setAllatkor(allatkor);
+        setAllatfajta(allatfajta);
+        setAllativar(allativar);
+        setAllatleiras(allatleiras);
+      })
+      .catch((err) => console.log(err));
+  }, [allatid]);
 
   function handleSubmit(event) {
     event.preventDefault();

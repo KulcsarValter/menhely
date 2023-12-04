@@ -214,6 +214,20 @@ app.get("/orokbefogadott", (req, res) => {
   });
 });
 
+app.get("/allatok/:id", (req, res) => {
+  const allatid= req.params.id;
+  console.log(allatid);
+  const sql = "SELECT * FROM allatok WHERE allatid = ?";
+  db.query(sql, [allatid], (err, data) => {
+    if (err) {
+      return res.json(err);
+    } else {
+      return res.json(data[0]);
+    }
+  });
+});
+
+
 app.get("/allatok/:allatnev", (req, res) => {
   const allatnev = req.params.allatnev;
   const sql = "SELECT * FROM allatok WHERE allatnev = ?";
