@@ -38,7 +38,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/allatok", (req, res) => {
-  const sql = "SELECT * FROM allatok";
+  const sql = "SELECT * FROM allatok WHERE allatstatusz=0";
   db.query(sql, (err, data) => {
     if (err) {
       return res.json(err);
@@ -49,7 +49,7 @@ app.get("/allatok", (req, res) => {
 });
 
 app.get("/kutyak", (req, res) => {
-  let sql = 'SELECT * FROM allatok where allatfaj = "Kutya"';
+  let sql = 'SELECT * FROM allatok where allatfaj = "Kutya" AND allatstatusz=0';
   db.query(sql, (err, data) => {
     if (err) {
       return res.json(err);
@@ -60,7 +60,7 @@ app.get("/kutyak", (req, res) => {
 });
 
 app.get("/macskak", (req, res) => {
-  let sql = 'SELECT * FROM allatok where allatfaj = "Macska"';
+  let sql = 'SELECT * FROM allatok where allatfaj = "Macska" AND allatstatusz=0';
   db.query(sql, (err, data) => {
     if (err) {
       return res.json(err);
