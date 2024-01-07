@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../navbar/Navbar";
 import Card from "../Card/Card";
@@ -17,7 +16,7 @@ function Allatok() {
   return (
     <div>
       <Navbar />
-      <div className="d-flex justify-content-center my-5">
+      <div className="d-flex flex-wrap justify-content-center border-2 mt-5">
         {allatok.map((data, i) => (
           <Card data={data} key={i} />
         ))}

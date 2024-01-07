@@ -6,7 +6,7 @@ function Navbar() {
   return (
     <div className="flex justify-center">
       <nav>
-        <a>
+        <a href="/">
           <svg
             id="logo-15"
             width="49"
@@ -97,6 +97,11 @@ function Navbar() {
           <li>
             <Link to="/elerhetoseg" className="">
               Elérhetőségeink
+            </Link>
+          </li>
+          <li>
+            <Link to="/admin" className="">
+              Admin
             </Link>
           </li>
         </ul>

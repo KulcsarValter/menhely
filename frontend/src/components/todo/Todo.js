@@ -25,62 +25,71 @@ function Todo() {
 
   return (
     <div className="d-flex vh-100 justify-content-center align-items-center">
-      <div className="w-50 bg-white rounded p-3">
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Faj</th>
-              <th>Név</th>
-              <th>Kor</th>
-              <th>Fajta</th>
-              <th>Ivar</th>
-              <th>Státusza</th>
-            </tr>
-          </thead>
-          <tbody>
-            {allat.map((data, i) => (
-              <tr key={i}>
-                <td>{data.allatid}</td>
-                <td>{data.allatfaj}</td>
-                <td>{data.allatnev}</td>
-                <td>{data.allatkor} éves</td>
-                <td>{data.allatfajta}</td>
-                <td>{data.allativar}</td>
-                <td>{data.allatstatusz}</td>
-                <td>
-                  <div>
-                    <Link
-                      to={`/update/${data.allatid}`}
-                      className="btn btn-success mx-3 w-35"
-                    >
-                      Módosítás
-                    </Link>
-                    <button
-                      className="btn btn-danger mr w-35"
-                      onClick={() => handleDelete(data.allatid)} // Új sor
-                    >
-                      Törlés
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="bg-white w-50 rounded p-3">
+        <div className="fw-bold d-flex justify-content-between">
+          <p>Id</p>
+          <p>Faj</p>
+          <p>Név</p>
+          <p>Kor</p>
+          <p>Fajta</p>
+          <p>Ivar</p>
+          <p>Státusza</p>
+        </div>
+        <hr></hr>
+
+        <div>
+          {allat.map((data, i) => (
+            <div key={i}>
+              <div className="d-flex flex-wrap justify-content-between">
+                <p>{data.allatid}</p>
+                <p>{data.allatfaj}</p>
+                <p>{data.allatnev}</p>
+                <p>{data.allatkor} éves</p>
+                <p>{data.allatfajta}</p>
+                <p>{data.allativar}</p>
+                <p>{data.allatstatusz}</p>
+              </div>
+
+              <div className="d-flex flex-wrap justify-content-between">
+                <div className="w-40">
+                  <Link
+                    to={`/update/${data.allatid}`}
+                    className="btn btn-success  w-100"
+                  >
+                    Módosítás
+                  </Link>
+                </div>
+                <div className="w-40">
+                  <button
+                    className="btn btn-danger mr w-100"
+                    onClick={() => handleDelete(data.allatid)} // Új sor
+                  >
+                    Törlés
+                  </button>
+                </div>
+              </div>
+              <hr></hr>
+            </div>
+          ))}
+        </div>
+
         <div className="tc">
-          <Link
-            to="/todo/HozzaadForm"
-            className="pa2 bg-green link ba br2 db w-100 mb2 hover-yellow hover-bg-dark-green"
-          >
-            Hozzáadás
-          </Link>
-          <Link
-            to="/"
-            className="pa2 bg-light-blue link ba br2 db w-100 hover-yellow hover-bg-dark-blue"
-          >
-            Kilépés
-          </Link>
+          <div>
+            <Link
+              to="/todo/HozzaadForm"
+              className="pa2 bg-green link ba br2 db w-100 mb2 hover-yellow hover-bg-dark-green"
+            >
+              Hozzáadás
+            </Link>
+          </div>
+          <div>
+            <Link
+              to="/"
+              className="pa2 bg-light-blue link ba br2 db w-100 hover-yellow hover-bg-dark-blue"
+            >
+              Kilépés
+            </Link>
+          </div>
         </div>
       </div>
     </div>

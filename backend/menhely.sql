@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2023. Okt 01. 19:31
+-- Létrehozás ideje: 2024. Jan 06. 11:25
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.2.4
 
@@ -62,9 +62,10 @@ CREATE TABLE `allatok` (
 --
 
 INSERT INTO `allatok` (`allatid`, `allatfaj`, `allatnev`, `allatkor`, `allatfajta`, `allativar`, `allatstatusz`, `allatleiras`, `allatkep`) VALUES
-(14, 'Kutya', 'Rex', 3, 'Németjuhász', 'Kan', 1, 'Rex, amikor nem fúrja magát éppen az öledbe, kezedbe, akkor megmutatkozik a határtalan huncutsága. Vigyázat, a csokibarna kisfiú függőséget okoz. Nyugodtan lehet tolongani, van vele feladat.', 'public/images/Rex.jpg'),
+(14, 'Kutya', 'Rex', 5, 'Németjuhász', 'Kan', 1, 'Rex, amikor nem fúrja magát éppen az öledbe, kezedbe, akkor megmutatkozik a határtalan huncutsága. Vigyázat, a csokibarna kisfiú függőséget okoz. Nyugodtan lehet tolongani, van vele feladat.', 'public/images/Rex.jpg'),
 (15, 'Macska', 'Cirmi', 1, 'Házimacska', 'Nőstény', 1, 'Barátságos cica. Mintha mindig is ismert volna minket, nem fél, azonnal jön, hogy simogassuk és foglalkozzunk vele. Lakásban érzi magát a legjobban,de a szabadban is feltalálja magát.', 'public/images/Cirmi.jpg'),
-(16, 'Kutya', 'Tyson', 1, 'Rottweiler', 'Kan', 0, 'Tyson kedves, érdeklődő, szereti az emberek társaságát. A simogatást, hűséggel jutalmazza.', 'public/images/allatKep-1694451006908-964839390allatKep-1693937811840-696249611Tyson.jpg');
+(16, 'Kutya', 'Tyson', 1, 'Rottweiler', 'Kan', 1, 'Tyson kedves, érdeklődő, szereti az emberek társaságát. A simogatást, hűséggel jutalmazza.', 'public/images/allatKep-1694451006908-964839390allatKep-1693937811840-696249611Tyson.jpg'),
+(18, 'Kutya', 'Cimbi', 5, 'Labrador', 'Nöstény', 0, 'Igen ragaszkodó, játékos, szeretet igényes, szófogadó tündéri kutya.\r\nIgazi felelős gazdira vár, ez a szépséges, okos kutyus.', 'public/images/allatKep-1704109251207-607014795Cimbi.jpg');
 
 -- --------------------------------------------------------
 
@@ -86,7 +87,8 @@ CREATE TABLE `orokbefogado` (
 
 INSERT INTO `orokbefogado` (`orokbefogadoid`, `nev`, `email`, `telefon`, `kisallatnev`) VALUES
 (19, 'admin', '2021579@dszcberegszaszi.hu', '06301845627', 'Rex'),
-(20, 'Kulcsár Valter', 'nagy@gmail.com', '7394341', 'Cirmi');
+(20, 'Kulcsár Valter', 'nagy@gmail.com', '7394341', 'Cirmi'),
+(21, 'Valter36', 'kulcsarvalter1975@gmail.com', '234234234242', 'Tyson');
 
 -- --------------------------------------------------------
 
@@ -106,7 +108,8 @@ CREATE TABLE `orokbefogadott` (
 
 INSERT INTO `orokbefogadott` (`allatid`, `orokbefogadoid`, `allatnev`) VALUES
 (14, 19, 'Rex'),
-(15, 20, 'Cirmi');
+(15, 20, 'Cirmi'),
+(16, 21, 'Tyson');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -139,13 +142,13 @@ ALTER TABLE `orokbefogadott`
 -- AUTO_INCREMENT a táblához `allatok`
 --
 ALTER TABLE `allatok`
-  MODIFY `allatid` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `allatid` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT a táblához `orokbefogado`
 --
 ALTER TABLE `orokbefogado`
-  MODIFY `orokbefogadoid` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `orokbefogadoid` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Megkötések a kiírt táblákhoz

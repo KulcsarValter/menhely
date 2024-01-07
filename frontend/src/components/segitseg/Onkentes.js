@@ -10,7 +10,7 @@ function Onkentes() {
   return (
     <div>
       <Navbar />
-      <div className="container onkentes tc w-100 mt5">
+      <div className="container p-3 tc w-100 mt5">
         <div>
           <div className="flex">
             <div id="szoveg" className="flex w-100 ba br2">
@@ -27,21 +27,23 @@ function Onkentes() {
                 befogadással járulnak hozzá Alapítványunk munkájához.
               </p>
             </div>
-            <div className="flex items-center justify-center images ml3 w-100">
-              <img
-                className="ml3"
-                src={image}
-                alt="Girl in a jacket"
-                width={300}
-                height={210}
-              ></img>
-              <img
-                className="ml3"
-                src={image2}
-                alt="Girl in a jacket"
-                width={300}
-                height={210}
-              ></img>
+            <div className="d-flex flex-wrap items-center justify-center images ml3 w-100">
+              <div>
+                <img
+                  src={image}
+                  alt="Girl in a jacket"
+                  width={300}
+                  height={210}
+                ></img>
+              </div>
+              <div>
+                <img
+                  src={image2}
+                  alt="Girl in a jacket"
+                  width={300}
+                  height={210}
+                ></img>
+              </div>
             </div>
           </div>
           <div className="flex flex-row-reverse mt4">

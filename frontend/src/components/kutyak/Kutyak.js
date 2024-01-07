@@ -17,12 +17,12 @@ function Kutyak() {
   return (
     <div>
       <Navbar />
-      <div className="d-flex justify-content-center my-5">
+      <div className="d-flex flex-wrap justify-content-center border-2 mt-5">
         {kutyak.map((data, i) => (
           <Card data={data} key={i} />
         ))}
       </div>
-      <div className="d-flex justify-content-center">
+      <div className="d-flex justify-content-center mt-5">
         <Link
           to="/orokbefogadas"
           className="d-flex justify-content-center btn btn-outline-info"

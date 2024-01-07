@@ -1,46 +1,45 @@
 nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #1b2430;
-    padding:20px;
-    width: 100%;
-  }
-  #navbar{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1b2430;
+  padding: 20px;
+  width: 100%;
+}
+#navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  ul li{
-    text-align: center; 
-  }
+ul li {
+  text-align: center;
+}
 
-  ul li ul{
-    position: absolute;
-    right: -50px;
-    width: 410px;
-    background-color:#1b2430;
-    display: none;
-  }
-  ul li:hover ul{
-    display: block;
-    text-align: center;
-  }
+ul li ul {
+  position: absolute;
+  right: -50px;
+  width: 410px;
+  background-color: #1b2430;
+  display: none;
+}
+ul li:hover ul {
+  display: block;
+  text-align: center;
+}
 
-  #navbar li{
-    list-style: none;
-    padding: 0 80px;
-    position: relative;
-  }
-  #navbar li a{
-    text-decoration: none;
-    font-size: 1.3em;
-    font-weight: 900;
-    color: white;
-  }
-  #navbar li a:hover{
-    color: #17cf97;
-    text-shadow: 0 0 10px #17cf97,
-     0 0 100px #17cf97; 
-  }
+#navbar li {
+  list-style: none;
+  padding: 0 80px;
+  position: relative;
+}
+#navbar li a {
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: 900;
+  color: white;
+}
+#navbar li a:hover {
+  color: #17cf97;
+  text-shadow: 0 0 10px #17cf97, 0 0 100px #17cf97;
+}
