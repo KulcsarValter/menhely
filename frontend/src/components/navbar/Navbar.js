@@ -1,112 +1,59 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 function Navbar() {
   return (
-    <div className="flex justify-center">
-      <nav>
-        <a href="/">
-          <svg
-            id="logo-15"
-            width="49"
-            height="48"
-            viewBox="0 0 49 48"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            {" "}
-            <path
-              d="M24.5 12.75C24.5 18.9632 19.4632 24 13.25 24H2V12.75C2 6.53679 7.03679 1.5 13.25 1.5C19.4632 1.5 24.5 6.53679 24.5 12.75Z"
-              class="ccustom"
-              fill="#17CF97"
-            ></path>{" "}
-            <path
-              d="M24.5 35.25C24.5 29.0368 29.5368 24 35.75 24H47V35.25C47 41.4632 41.9632 46.5 35.75 46.5C29.5368 46.5 24.5 41.4632 24.5 35.25Z"
-              class="ccustom"
-              fill="#17CF97"
-            ></path>{" "}
-            <path
-              d="M2 35.25C2 41.4632 7.03679 46.5 13.25 46.5H24.5V35.25C24.5 29.0368 19.4632 24 13.25 24C7.03679 24 2 29.0368 2 35.25Z"
-              class="ccustom"
-              fill="#17CF97"
-            ></path>{" "}
-            <path
-              d="M47 12.75C47 6.53679 41.9632 1.5 35.75 1.5H24.5V12.75C24.5 18.9632 29.5368 24 35.75 24C41.9632 24 47 18.9632 47 12.75Z"
-              class="ccustom"
-              fill="#17CF97"
-            ></path>{" "}
-          </svg>
-        </a>
-        <ul id="navbar">
-          <li>
-            <Link to="/" className="">
-              Rólunk
-            </Link>
-          </li>
-          <li>
-            <Link className="">Segítenél?</Link>
-            <ul>
-              <li>
-                <Link to="/onkentes" className="">
-                  Legyél önkéntes
-                </Link>
-              </li>
+      <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div className="container-fluid">
+          
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul className="navbar-nav">
               <li className="nav-item">
-                <Link to="/ideiglenesBefogado" className="">
-                  Ideiglenes befogadás
-                </Link>
+                <a className="nav-link" href="/">Rólunk</a>
               </li>
+
+              
               <li className="nav-item">
-                <Link to="/tamogatas" className="">
-                  Támogatás
-                </Link>
+                <a className="nav-link" href="/orokbefogadott">Örögbefogadottak</a>
               </li>
+
+              <li className="nav-item dropdown">
+                <a className="nav-link dropdown-toggle" href="/allatok" role="button" data-bs-toggle="dropdown">Kisállataink</a>
+                <ul className="dropdown-menu">
+                  <li><a className="dropdown-item" href="/allatok">Összes kisállat</a></li>
+                  <li><a className="dropdown-item" href="/kutyak">Kutyáink</a></li>
+                  <li><a className="dropdown-item" href="/macskak">Macskáink</a></li>
+                </ul>
+              </li>
+
+              <li className="nav-item dropdown">
+                <a className="nav-link dropdown-toggle" href="/tamogatas" role="button" data-bs-toggle="dropdown">Segítenél?</a>
+                <ul className="dropdown-menu">
+                  <li><a className="dropdown-item" href="/onkentes">Legyál önkéntes</a></li>
+                  <li><a className="dropdown-item" href="/ideiglenesBefogado">Ideiglenes befogadás</a></li>
+                  <li><a className="dropdown-item" href="/tamogatas">Támogatás</a></li>
+                </ul>
+              </li>
+
+              <li className="nav-item">
+                <a className="nav-link" href="/kapcsolat">Kapcsolat</a>
+              </li>
+
+              <li className="nav-item">
+                <a className="nav-link" href="/elerhetoseg">Elérhetőségünk</a>
+              </li>
+
+              <li className="nav-item">
+                <a className="nav-link" href="/admin">Bejelentkezés</a>
+              </li>
+
             </ul>
-          </li>
-          <li>
-            <Link className="">Kisállataink</Link>
-            <ul>
-              <li>
-                <Link to="/allatok" className="">
-                  Összes kisállat
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/kutyak" className="">
-                  Kutyáink
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/macskak" className="">
-                  Macskáink
-                </Link>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <Link to="/kapcsolat" className="">
-              Kapcsolat
-            </Link>
-          </li>
-          <li>
-            <Link to="/orokbrfogadott" className="">
-              Örökbefogadott
-            </Link>
-          </li>
-          <li>
-            <Link to="/elerhetoseg" className="">
-              Elérhetőségeink
-            </Link>
-          </li>
-          <li>
-            <Link to="/admin" className="">
-              Admin
-            </Link>
-          </li>
-        </ul>
+          </div>
+        </div>
       </nav>
-    </div>
   );
 }
 

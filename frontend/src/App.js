@@ -35,7 +35,7 @@ function App() {
         <Route path="/fileupload" element={<Fileupload />}></Route>
         <Route path="/todo/HozzaadForm" element={<HozzaadForm />}></Route>{" "}
         <Route path="/update/:allatid" element={<ModositForm />}></Route>
-        <Route path="/orokbrfogadott" element={<OrokbefogadottForm />}></Route>
+        <Route path="/orokbefogadott" element={<OrokbefogadottForm />}></Route>
         <Route path="/onkentes" element={<Onkentes />}></Route>
         <Route
           path="/ideiglenesBefogado"
